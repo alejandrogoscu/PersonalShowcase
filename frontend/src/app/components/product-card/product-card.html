@@ -1,0 +1,51 @@
+<article class="product-card">
+  <!-- Category badge -->
+  <div class="product-badge" [style.background-color]="getCategoryColor()">
+    {{ getCategoryLabel() }}
+  </div>
+
+  <!-- Product header -->
+  <div class="product-header">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-description">{{ product.shortDescription }}</p>
+  </div>
+
+  <!-- Features list -->
+  <div class="product-features" *ngIf="product.features && product.features.length > 0">
+    <h4 class="features-title">✨ Características:</h4>
+    <ul class="features-list">
+      <li *ngFor="let feature of product.features" class="feature-item">
+        <span class="feature-icon">✓</span>
+        <span class="feature-text">{{ feature }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Technical skills (only for technical category) -->
+  <div class="product-skills" *ngIf="product.technicalSkills && product.technicalSkills.length > 0">
+    <h4 class="skills-title">💻 Stack Técnico:</h4>
+    <div class="skills-tags">
+      <span *ngFor="let skill of product.technicalSkills" class="skill-tag">
+        {{ skill }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Footer with price and button -->
+  <div class="product-footer">
+    <div class="product-price">
+      <span class="price-icon">💰</span>
+      <span class="price-label">{{ product.priceLabel }}</span>
+    </div>
+
+    <button
+      type="button"
+      class="add-to-cart-btn"
+      (click)="onAddToCart()"
+      [attr.aria-label]="'Agregar ' + product.name + ' al carrito'"
+    >
+      <span class="btn-icon">🛒</span>
+      <span class="btn-text">Agregar al Carrito</span>
+    </button>
+  </div>
+</article>
