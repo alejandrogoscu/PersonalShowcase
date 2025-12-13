@@ -10,9 +10,9 @@
     <p class="product-description">{{ product.shortDescription }}</p>
   </div>
 
-  <!-- Features list -->
+  <!-- Features list (NO emojis, only checkmarks) -->
   <div class="product-features" *ngIf="product.features && product.features.length > 0">
-    <h4 class="features-title">✨ Características:</h4>
+    <h4 class="features-title">Características Principales</h4>
     <ul class="features-list">
       <li *ngFor="let feature of product.features" class="feature-item">
         <span class="feature-icon">✓</span>
@@ -21,21 +21,44 @@
     </ul>
   </div>
 
-  <!-- Technical skills (only for technical category) -->
+  <!-- Technical skills (collapsible accordion) -->
   <div class="product-skills" *ngIf="product.technicalSkills && product.technicalSkills.length > 0">
-    <h4 class="skills-title">💻 Stack Técnico:</h4>
-    <div class="skills-tags">
-      <span *ngFor="let skill of product.technicalSkills" class="skill-tag">
-        {{ skill }}
+    <!-- Toggle button -->
+    <button
+      type="button"
+      class="skills-toggle"
+      (click)="toggleSkills()"
+      [attr.aria-expanded]="isSkillsExpanded"
+      [attr.aria-label]="'Mostrar u ocultar stack técnico de ' + product.name"
+    >
+      <span class="skills-toggle-text">
+        <span class="skills-toggle-title">Stack Técnico</span>
+        <span class="skills-toggle-count">({{ product.technicalSkills.length }})</span>
       </span>
+      <span class="skills-toggle-icon" [class.expanded]="isSkillsExpanded"> ▼ </span>
+    </button>
+
+    <!-- Collapsible skills content -->
+    <div
+      class="skills-content"
+      [class.expanded]="isSkillsExpanded"
+      [attr.aria-hidden]="!isSkillsExpanded"
+    >
+      <div class="skills-tags">
+        <span *ngFor="let skill of product.technicalSkills" class="skill-tag">
+          {{ skill }}
+        </span>
+      </div>
     </div>
   </div>
 
-  <!-- Footer with price and button -->
+  <!-- Footer with price and button (NO emojis) -->
   <div class="product-footer">
     <div class="product-price">
-      <span class="price-icon">💰</span>
-      <span class="price-label">{{ product.priceLabel }}</span>
+      <div class="price-content">
+        <span class="price-label-title">Precio</span>
+        <span class="price-label-value">{{ product.priceLabel }}</span>
+      </div>
     </div>
 
     <button
@@ -44,8 +67,8 @@
       (click)="onAddToCart()"
       [attr.aria-label]="'Agregar ' + product.name + ' al carrito'"
     >
-      <span class="btn-icon">🛒</span>
       <span class="btn-text">Agregar al Carrito</span>
+      <span class="btn-arrow">→</span>
     </button>
   </div>
 </article>
