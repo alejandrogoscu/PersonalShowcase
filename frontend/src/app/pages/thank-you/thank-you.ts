@@ -15,25 +15,23 @@ export class ThankYouComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
-    // Get selected skills from cart
+    // Get selected skills from cart before clearing
     const cartItems = this.cartService.getCartItems();
 
     if (cartItems.length === 0) {
-      // If cart is empty, redirect to home
+      // Redirect to home if cart is empty (direct access to thank-you page)
       this.router.navigate(['/']);
       return;
     }
 
-    // Extract selected product names
+    // Extract selected product names for recap display
     this.selectedSkills = cartItems.map((item) => item.product.name);
 
     // Clear cart after showing confirmation
+    // In real app, this would happen after successful payment/order creation
     this.cartService.clearCart();
   }
 
-  /**
-   * Navigate back to home
-   */
   goToHome(): void {
     this.router.navigate(['/']);
   }
