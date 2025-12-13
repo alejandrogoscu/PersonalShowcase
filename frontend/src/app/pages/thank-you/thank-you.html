@@ -1,18 +1,16 @@
 <div class="thank-you-page">
-  <!-- Success animation container -->
   <div class="success-container">
+    <!-- Success checkmark animation -->
     <div class="success-checkmark">
-      <div class="check-icon">
-        <span class="icon-line line-tip"></span>
-        <span class="icon-line line-long"></span>
-        <div class="icon-circle"></div>
-        <div class="icon-fix"></div>
-      </div>
+      <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+      </svg>
     </div>
 
     <!-- Main message -->
     <div class="message-container">
-      <h1 class="thank-you-title">¡Gracias por tu Interés! 🎉</h1>
+      <h1 class="thank-you-title">Gracias por tu Interés</h1>
       <p class="thank-you-subtitle">
         Tu selección ha sido confirmada. Estoy emocionado por la posibilidad de colaborar juntos.
       </p>
@@ -20,7 +18,7 @@
 
     <!-- Selected skills recap -->
     <div class="selected-skills" *ngIf="selectedSkills.length > 0">
-      <h2 class="skills-title">Habilidades que te interesaron:</h2>
+      <h2 class="skills-title">Habilidades que te interesaron</h2>
       <ul class="skills-list">
         <li *ngFor="let skill of selectedSkills" class="skill-item">
           <span class="skill-icon">✓</span>
@@ -29,12 +27,11 @@
       </ul>
     </div>
 
-    <!-- Why choose me section -->
+    <!-- Why choose me section (compacto) -->
     <div class="why-me-section">
-      <h2 class="section-title">🎯 Por qué elegirme para Eciglogística</h2>
+      <h2 class="section-title">Por qué elegirme para ECIGLOGÍSTICA</h2>
       <div class="benefits-grid">
         <div class="benefit-card">
-          <div class="benefit-icon">💚</div>
           <h3 class="benefit-title">Valores Compartidos</h3>
           <p class="benefit-description">
             Una empresa sólida, con tecnología real y un equipo colaborativo donde aportar y seguir
@@ -43,7 +40,6 @@
         </div>
 
         <div class="benefit-card">
-          <div class="benefit-icon">🤝</div>
           <h3 class="benefit-title">Trabajo en Equipo</h3>
           <p class="benefit-description">
             Colaboro eficientemente con equipos multidisciplinarios hacia objetivos comunes y nuevos
@@ -52,7 +48,6 @@
         </div>
 
         <div class="benefit-card">
-          <div class="benefit-icon">💡</div>
           <h3 class="benefit-title">Soluciones Creativas</h3>
           <p class="benefit-description">
             Aporto ideas innovadoras y enfoques únicos para resolver problemas complejos con
@@ -62,24 +57,30 @@
       </div>
     </div>
 
-    <!-- Next steps -->
+    <!-- Next steps (compacto) -->
     <div class="next-steps">
-      <h2 class="steps-title">📋 Próximos Pasos</h2>
-      <ol class="steps-list">
-        <li class="step-item">
-          <span class="step-number">1</span>
-          <div class="step-content">
-            <h3 class="step-title">Comencemos a Colaborar</h3>
-            <p class="step-description">¡Unamos fuerzas para hacer crecer Eciglogística!</p>
-          </div>
-        </li>
-      </ol>
+      <h2 class="steps-title">Próximos Pasos</h2>
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3 class="step-title">Comencemos a Colaborar</h3>
+          <p class="step-description">Unamos fuerzas para hacer crecer ECIGLOGÍSTICA</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA buttons -->
+    <div class="cta-container">
+      <button type="button" class="primary-cta" (click)="goToHome()">
+        <span class="btn-arrow">←</span>
+        <span class="btn-text">Volver al Inicio</span>
+      </button>
     </div>
 
     <!-- Footer note -->
     <div class="footer-note">
-      <p>💚 Creado con pasión para <strong>ECIGLOGÍSTICA</strong> por Alejandro Goscu</p>
-      <p class="tech-stack">🛠️ Laravel 11 + Angular 19 + TypeScript + CSS Grid</p>
+      <p>Creado con pasión para <strong>ECIGLOGÍSTICA</strong> por Alejandro Goscu</p>
+      <p class="tech-stack">Laravel 11 + Angular 19 + TypeScript + CSS Grid</p>
     </div>
   </div>
 </div>

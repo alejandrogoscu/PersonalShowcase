@@ -63,12 +63,12 @@ class ProductSeeder extends Seeder
                 'short_description' => 'Team Player apasionado, fiable y orientado al trabajo en equipo',
                 'description' => 'Profesional con una actitud colaborativa y una comunicación clara, orientado a aportar valor dentro del equipo de forma responsable y sostenible. Acostumbrado a trabajar de manera coordinada, respetando procesos, tiempos y objetivos comunes.',
                 'category' => 'teamwork',
-                'price_label' => 'Colaboración efectiva + Valores de eciglogística',
+                'price_label' => 'Colaboración efectiva + Valores de Eciglogística',
                 'image_url' => null,
                 'features' => [
                     'Colaboración efectiva y responsable',
                     'Comunicación clara y constructiva',
-                    'Respeto por porcesos y tiempos',
+                    'Respeto por procesos y tiempos',
                     'Mentalidad colaborativa orientada a objetivos'
                 ],
                 'technical_skills' => null,
