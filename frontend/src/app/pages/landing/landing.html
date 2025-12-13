@@ -2,10 +2,8 @@
   <!-- Hero section -->
   <section class="hero-section">
     <div class="hero-content">
-      <h1 class="hero-title">👋 ¡Hola! Soy <span class="highlight">Alejandro</span></h1>
-      <p class="hero-subtitle">
-        Desarrollador Full Stack apasionado por crear soluciones innovadoras
-      </p>
+      <h1 class="hero-title">¡Hola! Soy <span class="highlight">Alejandro</span></h1>
+      <p class="hero-subtitle">Desarrollador Full Stack apasionado por el código</p>
       <p class="hero-description">
         Explora mis habilidades profesionales presentadas de forma creativa. Cada "producto"
         representa una faceta de mi experiencia como desarrollador.
@@ -21,19 +19,19 @@
 
   <!-- Error state -->
   <div class="error-container" *ngIf="error && !loading">
-    <div class="error-icon">⚠️</div>
+    <div class="error-icon">!</div>
     <h2 class="error-title">Oops, algo salió mal</h2>
     <p class="error-message">{{ error }}</p>
-    <button class="retry-button" (click)="loadProducts()">🔄 Intentar de nuevo</button>
+    <button class="retry-button" (click)="loadProducts()">
+      <span class="retry-icon">↻</span>
+      <span>Intentar de nuevo</span>
+    </button>
   </div>
 
   <!-- Products grid -->
   <section class="products-section" *ngIf="!loading && !error">
     <div class="section-header">
       <h2 class="section-title">Mis Habilidades como Productos</h2>
-      <p class="section-description">
-        Cada producto representa un aspecto clave de mi perfil profesional
-      </p>
     </div>
 
     <div class="products-grid">
@@ -47,7 +45,7 @@
 
     <!-- Empty state (if no products) -->
     <div class="empty-state" *ngIf="(products$ | async)?.length === 0">
-      <div class="empty-icon">📦</div>
+      <div class="empty-icon">?</div>
       <h3 class="empty-title">No hay productos disponibles</h3>
       <p class="empty-message">Parece que aún no hay productos en el catálogo.</p>
     </div>
@@ -61,9 +59,9 @@
         Agrega las habilidades que te interesan al carrito y descubre cómo podemos colaborar
       </p>
       <div class="cta-badges">
-        <span class="cta-badge">💻 Full Stack</span>
-        <span class="cta-badge">🚀 Desarrollo Continuo</span>
-        <span class="cta-badge">🤝 Trabajo en Equipo</span>
+        <span class="cta-badge">Full Stack</span>
+        <span class="cta-badge">Desarrollo Continuo</span>
+        <span class="cta-badge">Trabajo en Equipo</span>
       </div>
     </div>
   </section>
