@@ -56,8 +56,8 @@ export class CartComponent implements OnInit {
 
   getCategoryLabel(category: string): string {
     const labels: Record<string, string> = {
-      technical: 'Técnico',
-      learning: 'Aprendizaje',
+      technical: 'Técnica',
+      learning: 'Crecimiento',
       teamwork: 'Colaboración',
     };
     return labels[category] || category;
