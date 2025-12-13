@@ -12,7 +12,7 @@ class ProductController extends Controller
     /**
      * Display a listing of active products ordered by display_order.
      *
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -20,7 +20,9 @@ class ProductController extends Controller
             ->ordered()
             ->get();
 
-        return ProductResource::collection($products);
+        return response()->json(
+            ProductResource::collection($products)->resolve()
+        );
     }
 
     /**
@@ -42,7 +44,7 @@ class ProductController extends Controller
      * Display products filtered by category.
      *
      * @param  string  $category
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return \Illuminate\Http\JsonResponse
      */
     public function byCategory(string $category)
     {
@@ -51,6 +53,8 @@ class ProductController extends Controller
             ->ordered()
             ->get();
 
-        return ProductResource::collection($products);
+        return response()->json(
+            ProductResource::collection($products)->resolve()
+        );
     }
 }
