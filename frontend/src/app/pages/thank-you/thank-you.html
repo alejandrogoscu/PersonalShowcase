@@ -1,0 +1,85 @@
+<div class="thank-you-page">
+  <!-- Success animation container -->
+  <div class="success-container">
+    <div class="success-checkmark">
+      <div class="check-icon">
+        <span class="icon-line line-tip"></span>
+        <span class="icon-line line-long"></span>
+        <div class="icon-circle"></div>
+        <div class="icon-fix"></div>
+      </div>
+    </div>
+
+    <!-- Main message -->
+    <div class="message-container">
+      <h1 class="thank-you-title">¡Gracias por tu Interés! 🎉</h1>
+      <p class="thank-you-subtitle">
+        Tu selección ha sido confirmada. Estoy emocionado por la posibilidad de colaborar juntos.
+      </p>
+    </div>
+
+    <!-- Selected skills recap -->
+    <div class="selected-skills" *ngIf="selectedSkills.length > 0">
+      <h2 class="skills-title">Habilidades que te interesaron:</h2>
+      <ul class="skills-list">
+        <li *ngFor="let skill of selectedSkills" class="skill-item">
+          <span class="skill-icon">✓</span>
+          <span class="skill-name">{{ skill }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Why choose me section -->
+    <div class="why-me-section">
+      <h2 class="section-title">🎯 Por qué elegirme para Eciglogística</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">💚</div>
+          <h3 class="benefit-title">Valores Compartidos</h3>
+          <p class="benefit-description">
+            Una empresa sólida, con tecnología real y un equipo colaborativo donde aportar y seguir
+            creciendo como desarrollador.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🤝</div>
+          <h3 class="benefit-title">Trabajo en Equipo</h3>
+          <p class="benefit-description">
+            Colaboro eficientemente con equipos multidisciplinarios hacia objetivos comunes y nuevos
+            retos en el futuro.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💡</div>
+          <h3 class="benefit-title">Soluciones Creativas</h3>
+          <p class="benefit-description">
+            Aporto ideas innovadoras y enfoques únicos para resolver problemas complejos con
+            resultados claros y funcionales.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next steps -->
+    <div class="next-steps">
+      <h2 class="steps-title">📋 Próximos Pasos</h2>
+      <ol class="steps-list">
+        <li class="step-item">
+          <span class="step-number">1</span>
+          <div class="step-content">
+            <h3 class="step-title">Comencemos a Colaborar</h3>
+            <p class="step-description">¡Unamos fuerzas para hacer crecer Eciglogística!</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Footer note -->
+    <div class="footer-note">
+      <p>💚 Creado con pasión para <strong>ECIGLOGÍSTICA</strong> por Alejandro Goscu</p>
+      <p class="tech-stack">🛠️ Laravel 11 + Angular 19 + TypeScript + CSS Grid</p>
+    </div>
+  </div>
+</div>
