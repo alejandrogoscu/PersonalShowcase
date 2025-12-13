@@ -6,6 +6,19 @@ import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { ProductCardComponent } from '../../components/product-card/product-card';
 
+/**
+ * LandingComponent
+ *
+ * Main landing page that displays the product catalog (professional skills).
+ * Handles product loading, error states, and cart interactions.
+ *
+ * Features:
+ * - Hero section with introduction
+ * - Products grid with card components
+ * - Loading and error states
+ * - Call to action section
+ * - Add to cart functionality
+ */
 @Component({
   selector: 'app-landing',
   imports: [CommonModule, ProductCardComponent],
@@ -25,43 +38,45 @@ export class LandingComponent implements OnInit {
 
   /**
    * Load products from API
+   * Sets loading state and handles errors gracefully
    */
   loadProducts(): void {
     this.loading = true;
     this.error = null;
 
     this.productService.getProducts().subscribe({
-      next: (products) => {
+      next: () => {
         this.loading = false;
-        console.log('✅ Products loaded:', products);
       },
       error: (err) => {
         this.loading = false;
         this.error = 'No se pudieron cargar los productos. Por favor, intenta de nuevo.';
-        console.error('❌ Error loading products:', err);
+        console.error('Error loading products:', err);
       },
     });
 
-    // Assign observable for async pipe
+    // Assign observable for async pipe in template
     this.products$ = this.productService.getProducts();
   }
 
   /**
    * Handle add to cart event from ProductCard
+   * Adds product to cart and shows confirmation
+   *
+   * @param product Product to add to cart
    */
   onAddToCart(product: Product): void {
     this.cartService.addToCart(product);
-    console.log('✅ Producto agregado al carrito:', product.name);
-
-    // Optional: Show toast notification
     this.showNotification(`"${product.name}" agregado al carrito`);
   }
 
   /**
-   * Show temporary notification (simple implementation)
+   * Show temporary notification (simple alert implementation)
+   * TODO: Implement a proper toast/notification service for better UX
+   *
+   * @param message Notification message to display
    */
   private showNotification(message: string): void {
-    // TODO: Implement a proper toast/notification service
     alert(message);
   }
 }
