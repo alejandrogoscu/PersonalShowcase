@@ -1,20 +1,32 @@
 <div class="cart-page">
   <!-- Page header -->
   <div class="cart-header">
-    <h1 class="cart-title">🛒 Mi Carrito</h1>
-    <p class="cart-subtitle">Revisa los productos seleccionados antes de continuar</p>
+    <h1 class="cart-title">Resumen de Productos</h1>
   </div>
 
   <!-- Empty cart state -->
   <div class="empty-cart" *ngIf="(cartCount$ | async) === 0">
-    <div class="empty-icon">🛒</div>
+    <div class="empty-icon">
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+    </div>
     <h2 class="empty-title">Tu carrito está vacío</h2>
     <p class="empty-message">
       Parece que aún no has agregado ningún producto.<br />
       ¡Explora mis habilidades y agrégalas al carrito!
     </p>
     <button type="button" class="continue-shopping-btn" (click)="continueShopping()">
-      <span class="btn-icon">🏠</span>
+      <span class="btn-arrow">←</span>
       <span class="btn-text">Volver al Inicio</span>
     </button>
   </div>
@@ -36,9 +48,7 @@
             </span>
           </div>
 
-          <p class="item-description">
-            {{ item.product.shortDescription }}
-          </p>
+          <p class="item-description">{{ item.product.shortDescription }}</p>
 
           <!-- Features preview (first 2) -->
           <div
@@ -55,7 +65,7 @@
 
           <!-- Price label -->
           <div class="item-price">
-            <span class="price-icon">💰</span>
+            <span class="price-label">Precio:</span>
             <span class="price-text">{{ item.product.priceLabel }}</span>
           </div>
         </div>
@@ -90,7 +100,7 @@
             (click)="removeItem(item.product.id)"
             [attr.aria-label]="'Eliminar ' + item.product.name + ' del carrito'"
           >
-            <span class="remove-icon">🗑️</span>
+            <span class="remove-icon">×</span>
             <span class="remove-text">Eliminar</span>
           </button>
         </div>
@@ -110,31 +120,30 @@
         <div class="summary-divider"></div>
 
         <div class="summary-total">
-          <span class="total-label">Valor Total:</span>
-          <span class="total-value"> Compromiso con ECIGLOGÍSTICA</span>
+          <span class="total-label">Valor Total</span>
+          <span class="total-value">Compromiso con<br />ECIGLOGÍSTICA</span>
         </div>
 
         <button type="button" class="checkout-btn" (click)="proceedToCheckout()">
-          <span class="btn-icon">✓</span>
           <span class="btn-text">Confirmar Interés</span>
+          <span class="btn-arrow">→</span>
         </button>
 
         <button type="button" class="clear-cart-btn" (click)="clearCart()">
-          <span class="btn-icon">🗑️</span>
           <span class="btn-text">Vaciar Carrito</span>
         </button>
 
         <button type="button" class="secondary-btn" (click)="continueShopping()">
-          <span class="btn-icon">←</span>
+          <span class="btn-arrow">←</span>
           <span class="btn-text">Seguir Explorando</span>
         </button>
       </div>
 
       <!-- Info message -->
       <div class="info-message">
-        <div class="info-icon">💡</div>
+        <div class="info-icon">i</div>
         <p class="info-text">
-          Espero que confirmes tu interes y podamos empezar a colaborar juntos.
+          Espero que confirmes tu interés y podamos empezar a colaborar juntos.
         </p>
       </div>
     </div>
