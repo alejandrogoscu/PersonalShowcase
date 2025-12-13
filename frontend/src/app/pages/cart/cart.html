@@ -1,0 +1,142 @@
+<div class="cart-page">
+  <!-- Page header -->
+  <div class="cart-header">
+    <h1 class="cart-title">🛒 Mi Carrito</h1>
+    <p class="cart-subtitle">Revisa los productos seleccionados antes de continuar</p>
+  </div>
+
+  <!-- Empty cart state -->
+  <div class="empty-cart" *ngIf="(cartCount$ | async) === 0">
+    <div class="empty-icon">🛒</div>
+    <h2 class="empty-title">Tu carrito está vacío</h2>
+    <p class="empty-message">
+      Parece que aún no has agregado ningún producto.<br />
+      ¡Explora mis habilidades y agrégalas al carrito!
+    </p>
+    <button type="button" class="continue-shopping-btn" (click)="continueShopping()">
+      <span class="btn-icon">🏠</span>
+      <span class="btn-text">Volver al Inicio</span>
+    </button>
+  </div>
+
+  <!-- Cart with items -->
+  <div class="cart-content" *ngIf="(cartCount$ | async)! > 0">
+    <!-- Cart items list -->
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems$ | async" class="cart-item">
+        <!-- Product info -->
+        <div class="item-info">
+          <div class="item-header">
+            <h3 class="item-name">{{ item.product.name }}</h3>
+            <span
+              class="item-badge"
+              [style.background-color]="getCategoryColor(item.product.category)"
+            >
+              {{ getCategoryLabel(item.product.category) }}
+            </span>
+          </div>
+
+          <p class="item-description">
+            {{ item.product.shortDescription }}
+          </p>
+
+          <!-- Features preview (first 2) -->
+          <div
+            class="item-features"
+            *ngIf="item.product.features && item.product.features.length > 0"
+          >
+            <span class="feature-tag" *ngFor="let feature of item.product.features.slice(0, 2)">
+              ✓ {{ feature }}
+            </span>
+            <span class="feature-more" *ngIf="item.product.features.length > 2">
+              +{{ item.product.features.length - 2 }} más
+            </span>
+          </div>
+
+          <!-- Price label -->
+          <div class="item-price">
+            <span class="price-icon">💰</span>
+            <span class="price-text">{{ item.product.priceLabel }}</span>
+          </div>
+        </div>
+
+        <!-- Quantity controls -->
+        <div class="item-actions">
+          <div class="quantity-controls">
+            <button
+              type="button"
+              class="quantity-btn"
+              (click)="decrementQuantity(item.product.id, item.quantity)"
+              [attr.aria-label]="'Disminuir cantidad de ' + item.product.name"
+            >
+              −
+            </button>
+
+            <span class="quantity-display">{{ item.quantity }}</span>
+
+            <button
+              type="button"
+              class="quantity-btn"
+              (click)="incrementQuantity(item.product.id, item.quantity)"
+              [attr.aria-label]="'Aumentar cantidad de ' + item.product.name"
+            >
+              +
+            </button>
+          </div>
+
+          <button
+            type="button"
+            class="remove-btn"
+            (click)="removeItem(item.product.id)"
+            [attr.aria-label]="'Eliminar ' + item.product.name + ' del carrito'"
+          >
+            <span class="remove-icon">🗑️</span>
+            <span class="remove-text">Eliminar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart summary -->
+    <div class="cart-summary">
+      <div class="summary-card">
+        <h2 class="summary-title">Resumen del Carrito</h2>
+
+        <div class="summary-row">
+          <span class="summary-label">Total de productos:</span>
+          <span class="summary-value">{{ cartCount$ | async }}</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <span class="total-label">Valor Total:</span>
+          <span class="total-value"> Compromiso con ECIGLOGÍSTICA</span>
+        </div>
+
+        <button type="button" class="checkout-btn" (click)="proceedToCheckout()">
+          <span class="btn-icon">✓</span>
+          <span class="btn-text">Confirmar Interés</span>
+        </button>
+
+        <button type="button" class="clear-cart-btn" (click)="clearCart()">
+          <span class="btn-icon">🗑️</span>
+          <span class="btn-text">Vaciar Carrito</span>
+        </button>
+
+        <button type="button" class="secondary-btn" (click)="continueShopping()">
+          <span class="btn-icon">←</span>
+          <span class="btn-text">Seguir Explorando</span>
+        </button>
+      </div>
+
+      <!-- Info message -->
+      <div class="info-message">
+        <div class="info-icon">💡</div>
+        <p class="info-text">
+          Espero que confirmes tu interes y podamos empezar a colaborar juntos.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

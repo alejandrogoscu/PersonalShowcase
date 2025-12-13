@@ -26,7 +26,7 @@ export class ProductCardComponent {
     const labels: Record<string, string> = {
       technical: 'Técnico',
       learning: 'Crecimiento',
-      teamwork: 'Trabajo en Equipo',
+      teamwork: 'Colaboración',
     };
     return labels[this.product.category] || this.product.category;
   }
