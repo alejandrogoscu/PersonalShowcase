@@ -101,6 +101,7 @@ body {
   background-color: var(--gray-50);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-top: 80px;
 }
 
 /* Headings */

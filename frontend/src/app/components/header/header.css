@@ -8,8 +8,10 @@
 }
 
 .header {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
+  left: 0;
   z-index: 1000;
   background: var(--eco-red);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
