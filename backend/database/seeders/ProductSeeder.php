@@ -9,13 +9,10 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        // Solo crear si no existen
+        // Solo crear si no existen productos
         if (Product::count() > 0) {
-            $this->command->info('Products already exist. Skipping...');
             return;
         }
-
-        $this->command->info('Creating products...');
 
         $products = [
             [
@@ -86,9 +83,6 @@ class ProductSeeder extends Seeder
 
         foreach ($products as $product) {
             Product::create($product);
-            $this->command->info("Created: {$product['name']}");
         }
-
-        $this->command->info('✅ All products created successfully!');
     }
 }

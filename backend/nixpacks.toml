@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Packages.composer", "bash"]
+nixPkgs = ["php82", "php82Packages.composer"]
 
 [phases.install]
 cmds = ["composer install --no-dev --optimize-autoloader"]
@@ -8,8 +8,5 @@ cmds = ["composer install --no-dev --optimize-autoloader"]
 cmds = [
     "php artisan config:cache",
     "php artisan route:cache",
-    "chmod +x init-railway.sh"
+    "php artisan view:cache"
 ]
-
-[start]
-cmd = "./init-railway.sh"
