@@ -28,8 +28,8 @@ E-commerce creativo donde los "productos" representan mis habilidades profesiona
 
 ## 🌐 URLs de Producción
 
-- **Frontend:** []
-- **Backend API:** []
+- **Frontend:** [https://personalshowcase-production.up.railway.app]
+- **Backend API:** [https://alejandrogoscushowcase.vercel.app]
 - **Repositorio:** [https://github.com/alejandrogoscu/PersonalShowcase]
 
 ## 📦 Instalación Local
