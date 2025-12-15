@@ -4,19 +4,13 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
-use Illuminate\Support\Facades\Log;
-
-
 
 class ProductSeeder extends Seeder
 {
-
     public function run(): void
     {
-
-        // Log para debug
-        Log::info('ProductSeeder: Starting to seed products...');
-        echo "ProductSeeder: Starting to seed products...\n";
+        // Limpiar tabla antes de insertar
+        Product::truncate();
 
         $products = [
             [
@@ -86,16 +80,7 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $product) {
-            echo "Creating product: {$product['name']}\n";
-            Log::info("Creating product: {$product['name']}");
-
             Product::create($product);
-
-            echo "Product created successfully!\n";
-            Log::info("Product created successfully!");
         }
-
-        echo "ProductSeeder: All products seeded successfully!\n";
-        Log::info('ProductSeeder: All products seeded successfully!');
     }
 }
