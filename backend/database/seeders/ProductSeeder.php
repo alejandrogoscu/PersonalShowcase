@@ -9,8 +9,13 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        // Limpiar tabla antes de insertar
-        Product::truncate();
+        // Solo crear si no existen
+        if (Product::count() > 0) {
+            $this->command->info('Products already exist. Skipping...');
+            return;
+        }
+
+        $this->command->info('Creating products...');
 
         $products = [
             [
@@ -81,6 +86,9 @@ class ProductSeeder extends Seeder
 
         foreach ($products as $product) {
             Product::create($product);
+            $this->command->info("Created: {$product['name']}");
         }
+
+        $this->command->info('✅ All products created successfully!');
     }
 }
