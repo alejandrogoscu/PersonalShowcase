@@ -11,4 +11,4 @@ cmds = [
 ]
 
 [start]
-cmd = "php artisan migrate --force && php artisan db:seed --class=ProductSeeder --force && php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "echo '=== Running migrations ===' && php artisan migrate --force && echo '=== Migrations completed ===' && echo '=== Running seeder ===' && php artisan db:seed --class=ProductSeeder --force && echo '=== Seeder completed ===' && php artisan serve --host=0.0.0.0 --port=$PORT"
