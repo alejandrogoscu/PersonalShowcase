@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.production.com/api', // Cambiar por dominio
+  apiUrl: 'https://personalshowcase-production.up.railway.app/api', // Cambiar por dominio
 };
